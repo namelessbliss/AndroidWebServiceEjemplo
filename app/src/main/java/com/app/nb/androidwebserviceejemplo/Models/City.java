@@ -1,5 +1,7 @@
 package com.app.nb.androidwebserviceejemplo.Models;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 
 /**

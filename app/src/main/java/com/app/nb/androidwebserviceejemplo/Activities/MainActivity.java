@@ -5,12 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.app.nb.androidwebserviceejemplo.Models.City;
+import com.app.nb.androidwebserviceejemplo.Models.Town;
 import com.app.nb.androidwebserviceejemplo.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Forma nativa de parsear JSON
@@ -25,29 +23,16 @@ public class MainActivity extends AppCompatActivity {
         City city = null;
 
         // JSON de ejemplo
-        String json = "{" + "id: 1" + ", " + "name:" + " Lima" + ", country:" + " Peru" + "}";
-
-        try {
-            //Instanciar objeto JSON
-            JSONObject jsonObject = new JSONObject(json);
-            //Recuperar parametros
-            int id = jsonObject.getInt("id");
-            String name = jsonObject.getString("name");
-
-            //Instanciar nueva obj ciudad
-            city = new City(id, name);
-
-        } catch (JSONException e) {
-
-        }
-
-        //Toast.makeText(this, city.toString(), Toast.LENGTH_SHORT).show();
+        String json = "{" + "id: 0" + "," +
+                " city:{ id = 1, "
+                + "name:" + " Lima" + "," +
+                " country:" + " Peru" + "}}";
 
         // Parseando con GSON
 
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create(); //Excluye variables del modelo si la anotacion Expose
-        City city1 = gson.fromJson(json, City.class);
+        Gson gson = new GsonBuilder().create();
+        Town town = gson.fromJson(json, Town.class);
 
-        Toast.makeText(this, city1.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, town.getCity().toString(), Toast.LENGTH_SHORT).show();
     }
 }
