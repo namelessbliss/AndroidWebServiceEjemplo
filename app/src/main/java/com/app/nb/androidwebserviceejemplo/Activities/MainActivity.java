@@ -24,15 +24,20 @@ public class MainActivity extends AppCompatActivity {
 
         // JSON de ejemplo
         String json = "{" + "id: 0" + "," +
-                " city:{ id = 1, "
+                " cities:[" +
+                "{ id = 1, "
                 + "name:" + " Lima" + "," +
-                " country:" + " Peru" + "}}";
+                " country:" + " Peru" + "}," +
+                "{ id = 2, "
+                + "name:" + " Arquipa" + "," +
+                " country:" + " Peru" + "}" +
+                "]}";
 
         // Parseando con GSON
 
         Gson gson = new GsonBuilder().create();
         Town town = gson.fromJson(json, Town.class);
 
-        Toast.makeText(this, town.getCity().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, town.getCities().toString(), Toast.LENGTH_SHORT).show();
     }
 }

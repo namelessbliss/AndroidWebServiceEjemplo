@@ -3,14 +3,16 @@ package com.app.nb.androidwebserviceejemplo.Models;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.List;
+
 public class Town {
 
     private int id;
-    private City city;
+    private List<City> cities;
 
-    public Town(int id, City city) {
+    public Town(int id, List<City> city) {
         this.id = id;
-        this.city = city;
+        this.cities = city;
     }
 
     public Town() {
@@ -24,12 +26,12 @@ public class Town {
         this.id = id;
     }
 
-    public City getCity() {
-        return city;
+    public List<City> getCities() {
+        return cities;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setCities(List<City> cities) {
+        this.cities = cities;
     }
 
     public static City parseJSON(String response) {
