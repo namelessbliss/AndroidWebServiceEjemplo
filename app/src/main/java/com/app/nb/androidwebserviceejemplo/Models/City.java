@@ -1,10 +1,13 @@
 package com.app.nb.androidwebserviceejemplo.Models;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Modelo ciudad de ejemplo
  */
 public class City {
 
+    @Expose
     private int id;
     private String name;
 

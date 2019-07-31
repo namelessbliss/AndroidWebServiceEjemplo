@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.app.nb.androidwebserviceejemplo.Models.City;
 import com.app.nb.androidwebserviceejemplo.R;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         City city = null;
 
         // JSON de ejemplo
-        String json = "{" + "id: 1" + ", " + "name:" + " Lima}";
+        String json = "{" + "id: 1" + ", " + "name:" + " Lima" + ", country:" + " Peru" + "}";
 
         try {
             //Instanciar objeto JSON
@@ -44,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Parseando con GSON
 
-        Gson gson = new Gson();
-        City city1 = gson.fromJson(json,City.class);
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create(); //Excluye variables del modelo si la anotacion Expose
+        City city1 = gson.fromJson(json, City.class);
 
         Toast.makeText(this, city1.toString(), Toast.LENGTH_SHORT).show();
     }
