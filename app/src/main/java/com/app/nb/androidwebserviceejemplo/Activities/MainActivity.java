@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.app.nb.androidwebserviceejemplo.Models.City;
 import com.app.nb.androidwebserviceejemplo.R;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        Toast.makeText(this, city.toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, city.toString(), Toast.LENGTH_SHORT).show();
+
+        // Parseando con GSON
+
+        Gson gson = new Gson();
+        City city1 = gson.fromJson(json,City.class);
+
+        Toast.makeText(this, city1.toString(), Toast.LENGTH_SHORT).show();
     }
 }
