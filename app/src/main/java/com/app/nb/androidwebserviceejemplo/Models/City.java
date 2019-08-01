@@ -1,9 +1,6 @@
 package com.app.nb.androidwebserviceejemplo.Models;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 /**
  * Modelo ciudad de ejemplo
@@ -13,13 +10,15 @@ public class City {
     @Expose
     private int id;
     private String name;
-    @SerializedName("main") //Nombre original del key en el JSON que devuelve el API
-    private Temperature temperature;
+    private String country;
+    //@SerializedName("main") //Nombre original del key en el JSON que devuelve el API
+    //private Temperature temperature;
 
-    public City(int id, String name, Temperature temperature) {
+    public City(int id, String name, String country) {
         this.id = id;
         this.name = name;
-        this.temperature = temperature;
+        this.country = country;
+        //  this.temperature = temperature;
     }
 
     public City() {
@@ -41,13 +40,13 @@ public class City {
         this.name = name;
     }
 
-    public Temperature getTemperature() {
+   /* public Temperature getTemperature() {
         return temperature;
     }
 
     public void setTemperature(Temperature temperature) {
         this.temperature = temperature;
-    }
+    }*//*
 
     public static Temperature parseJSON(String response) {
         Gson gson = new GsonBuilder().create();
@@ -62,5 +61,5 @@ public class City {
                 ", name='" + name + '\'' +
                 ", temperature=" + temperature +
                 '}';
-    }
+    }*/
 }

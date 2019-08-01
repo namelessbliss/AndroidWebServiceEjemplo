@@ -1,5 +1,9 @@
 package com.app.nb.androidwebserviceejemplo.API;
 
+import com.app.nb.androidwebserviceejemplo.API.Deserializers.MyDeserializer;
+import com.app.nb.androidwebserviceejemplo.Models.City;
+import com.google.gson.GsonBuilder;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -22,9 +26,14 @@ public class API {
      */
     public static Retrofit getApi() {
         if (retrofit == null) {
+
+            //Registra deserializador para la clase City
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.registerTypeAdapter(City.class, new MyDeserializer());
+
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
                     .build();
         }
         return retrofit;
