@@ -1,0 +1,32 @@
+package com.app.nb.androidwebserviceejemplo.API;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+/**
+ * Retrofit Singleton
+ */
+public class API {
+
+    //Direccion de alojaiento del API
+    public static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
+    //APP KEY generada para usar el servicio
+    public static final String APP_KEY = "ffe5b339f1e33ea21f2b7dc33d773d77";
+    //Retrofit Singleton
+    private static Retrofit retrofit = null;
+
+    /**
+     * Obtiene la instancia del objeto Retrofit si existe, de lo contrario la crea una sola vez
+     *
+     * @return retrofit
+     */
+    public static Retrofit getApi() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
+    }
+}
